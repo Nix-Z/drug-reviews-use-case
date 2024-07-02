@@ -11,7 +11,7 @@ def visualize_data():
     fig_1.update_layout(xaxis_title='Rating', yaxis_title='Number of Reviews')
     fig_1.update_xaxes(showgrid=False)
     fig_1.update_yaxes(showgrid=False)
-    #fig_1.show()
+    fig_1.show()
     fig_1.write_image('fig_1.jpg')
 
     effectiveness_order = ['Highly Effective', 'Considerably Effective', 'Moderately Effective', 'Marginally Effective', 'Ineffective']
