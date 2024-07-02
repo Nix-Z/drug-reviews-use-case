@@ -7,4 +7,4 @@ def load_data():
     print(data.head())
     return data
 
-# load_data()
+load_data()
