@@ -10,4 +10,4 @@ def preprocess_data():
 
     return data
 
-# preprocess_data()
+preprocess_data()
