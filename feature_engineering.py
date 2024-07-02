@@ -51,7 +51,6 @@ def engineer_features():
     '''
     le = LabelEncoder()
     data['urlDrugName'] = le.fit_transform(data['urlDrugName'])
-    '''
 
     # Scale the Data
     new_data = data.drop(columns=['rating'])
@@ -62,6 +61,7 @@ def engineer_features():
     selected_columns = data[['rating']]
     scaled_data[['rating']] = selected_columns.copy()
     data = scaled_data
+    '''
 
     data.dropna(axis=0, how='any', inplace=True) # Drop any rows with null values
     
