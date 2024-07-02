@@ -27,7 +27,7 @@ def engineer_features():
     data['comments_sentiment'] = data['commentsReview'].apply(get_sentiment_scores)
     
     # Drop rows that were used for sentiment analysis
-    data.drop(['benefitsReview', 'sideEffectsReview', 'commentsReview'], axis=1, inplace=True)
+    data.drop(['urlDrugName', 'benefitsReview', 'sideEffectsReview', 'commentsReview'], axis=1, inplace=True)
 
     # Convert categorical columns to numerical
     data.replace({'effectiveness': {
@@ -48,8 +48,10 @@ def engineer_features():
                                     }
                   }, inplace=True)
     
+    '''
     le = LabelEncoder()
     data['urlDrugName'] = le.fit_transform(data['urlDrugName'])
+    '''
     
     print(data.head())
     
