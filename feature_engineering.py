@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 from datavisualization import visualize_data
 
 # Download VADER lexicon
@@ -47,11 +47,21 @@ def engineer_features():
                                     'Extremely Severe Side Effects':4
                                     }
                   }, inplace=True)
-    
+
     '''
     le = LabelEncoder()
     data['urlDrugName'] = le.fit_transform(data['urlDrugName'])
     '''
+
+    # Scale the Data
+    new_data = data.drop(columns=['rating'])
+    scaler = StandardScaler()
+    scaler.fit(new_data)
+    scaled_features = scaler.transform(new_data)
+    scaled_data = pd.DataFrame(scaled_features,columns=new_data.columns[:])
+    selected_columns = data[['rating']]
+    scaled_data[['rating']] = selected_columns.copy()
+    data = scaled_data
     
     print(data.head())
     
