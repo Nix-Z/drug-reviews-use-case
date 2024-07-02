@@ -25,4 +25,4 @@ def analyze_data():
   
   return data
   
-# analyze_data()
+analyze_data()
