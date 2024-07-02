@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from sklearn.preprocessing import LabelEncoder
 from datavisualization import visualize_data
 
 # Download VADER lexicon
@@ -37,6 +38,7 @@ def engineer_features():
                                     'Ineffective':4
                                     }
                   }, inplace=True)
+    
     data.replace({'sideEffects': {
                                     'No Side Effects':0,
                                     'Mild Side Effects':1,
@@ -45,6 +47,10 @@ def engineer_features():
                                     'Extremely Severe Side Effects':4
                                     }
                   }, inplace=True)
+    
+    le = LabelEncoder()
+    data['urlDrugName'] = le.fit_transform(data['urlDrugName'])
+    
     print(data.head())
     
     data.to_csv('drug_reviews_cleansed_data.csv', index=False)
