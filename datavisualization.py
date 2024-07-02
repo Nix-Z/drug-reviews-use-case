@@ -21,14 +21,14 @@ def visualize_data():
     fig_2.update_layout(xaxis_title='Effectiveness', yaxis_title='Number of Reviews')
     fig_2.update_xaxes(showgrid=False)
     fig_2.update_yaxes(showgrid=False)
-    #fig_2.show()
+    fig_2.show()
     fig_2.write_image('fig_2.jpg')
 
     fig_3 = px.histogram(data, x='sideEffects', category_orders={'sideEffects': side_effects_order})
     fig_3.update_layout(xaxis_title='Side Effects', yaxis_title='Number of Reviews')
     fig_3.update_xaxes(showgrid=False)
     fig_3.update_yaxes(showgrid=False)
-    #fig_3.show()
+    fig_3.show()
     fig_3.write_image('fig_3.jpg')
 
     # Stacked Graph for Effectiveness & Side Effects
@@ -41,9 +41,9 @@ def visualize_data():
     fig_4.update_layout(xaxis_title='Effectiveness', yaxis_title='Number of Reviews', legend_title='Side Effects')
     fig_4.update_xaxes(showgrid=False)
     fig_4.update_yaxes(showgrid=False)
-    #fig_4.show()
+    fig_4.show()
     fig_4.write_image('fig_4.jpg')
 
     return data
 
-# visualize_data()
+visualize_data()
