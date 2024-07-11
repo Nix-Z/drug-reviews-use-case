@@ -56,7 +56,7 @@ def engineer_features():
     
     print(data.head())
     
-    data.to_csv('drug_reviews_cleansed_data_2.csv', index=False)
+    data.to_csv('drug_reviews_cleansed_data.csv', index=False)
 
     return data
 
