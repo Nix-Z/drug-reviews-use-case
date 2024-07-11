@@ -21,14 +21,13 @@ def engineer_features():
             return sentiment['compound']
         return np.nan
 
-    # Concatenate reviews into a single text column for sentiment analysis
-    data['combined_review'] = data['benefitsReview'].fillna('') + ' ' + data['sideEffectsReview'].fillna('') + ' ' + data['commentsReview'].fillna('')
-
-    # Applying sentiment analysis using VADER on concatenated reviews
-    data['combined_sentiment'] = data['combined_review'].apply(get_sentiment_scores)
+    # Applying sentiment analysis
+    data['benefits_sentiment'] = data['benefitsReview'].apply(get_sentiment_scores)
+    data['sideEffects_sentiment'] = data['sideEffectsReview'].apply(get_sentiment_scores)
+    data['comments_sentiment'] = data['commentsReview'].apply(get_sentiment_scores)
     
     # Drop rows that were used for sentiment analysis
-    data.drop(['benefitsReview', 'sideEffectsReview', 'commentsReview', 'combined_review', 'urlDrugName'], axis=1, inplace=True)
+    data.drop(['benefitsReview', 'sideEffectsReview', 'commentsReview', 'urlDrugName'], axis=1, inplace=True)
 
     # Convert categorical columns to numerical
     data.replace({'effectiveness': {
@@ -56,7 +55,7 @@ def engineer_features():
     
     print(data.head())
     
-    data.to_csv('drug_reviews_cleansed_data_2.csv', index=False)
+    data.to_csv('drug_reviews_cleansed_data.csv', index=False)
 
     return data
 
